@@ -24,15 +24,21 @@ class TestTinySVM(unittest.TestCase):
         self.assertEqual(score, 1.0)
 
     def test_linear_regression(self):
-        """測試簡單線性回歸"""
-        X = [[1], [2], [3], [4], [5]]
-        y = [3, 5, 7, 9, 11] # y = 2x + 1
-        reg = TinySVM(mode='regression', kernel='linear', C=50.0, max_iter=1000, epsilon=0.01)
-        reg.fit(X, y)
+            """測試簡單線性回歸"""
+            X = [[1], [2], [3], [4], [5]]
+            y = [3, 5, 7, 9, 11] # y = 2x + 1
+            
+            # 修改：大幅增加迭代次數 (5000)，並降低停止容忍度 (tol=1e-6) 強迫模型繼續學習
+            reg = TinySVM(mode='regression', kernel='linear', C=100.0, max_iter=5000, epsilon=0.01, tol=1e-6)
+            reg.fit(X, y)
         
-        # 預測 x=6, 應該接近 13
-        pred = reg.predict([[6]])
-        self.assertTrue(12.5 < pred[0] < 13.5, f"Prediction {pred[0]} is not close to 13")
+            # 預測 x=6, 應該接近 13
+            pred = reg.predict([[6]])
+            
+            # 打印調試信息
+            print(f"Regression Prediction for x=6: {pred[0]}")
+            
+            self.assertTrue(12.5 < pred[0] < 13.5, f"Prediction {pred[0]} is not close to 13")
 
     def test_save_load(self):
         """測試模型保存與加載"""
