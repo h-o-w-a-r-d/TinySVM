@@ -27,8 +27,7 @@ class TestTinySVM(unittest.TestCase):
         """測試簡單線性回歸"""
         X = [[1], [2], [3], [4], [5]]
         y = [3, 5, 7, 9, 11] # y = 2x + 1
-
-        reg = TinySVM(mode='regression', kernel='linear', C=50.0)
+        reg = TinySVM(mode='regression', kernel='linear', C=50.0, max_iter=1000, epsilon=0.01)
         reg.fit(X, y)
         
         # 預測 x=6, 應該接近 13
