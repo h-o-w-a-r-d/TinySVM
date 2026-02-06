@@ -1,5 +1,7 @@
 # TinySVM 🚀
 
+[中文版](README_zh.md)
+
 A lightweight, dependency-free (NumPy only), and educational implementation of Support Vector Machines (SVM) in pure Python.
 
 **TinySVM** implements both Classification (SVC) and Regression (SVR) with a simplified SMO (Sequential Minimal Optimization) and Coordinate Descent algorithm. It serves as a great learning resource or a drop-in replacement for heavy libraries when you only need basic SVM functionality.
@@ -77,5 +79,6 @@ print(f"Prediction for x=6: {reg.predict([[6]])}") # Should be close to 13
 - `save(path) / load(path)`: Save/Load model state.
 
 ## 📜 License
+
 
 MIT License. Feel free to use it in your own projects!
